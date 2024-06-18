@@ -26,3 +26,4 @@ runs:
     - name: Set cache-hit output
       id: cache-outputs
       run: echo "cache-hit=${{ steps.cache.outputs.cache-hit }}" >> $GITHUB_OUTPUT
+      shell: bash

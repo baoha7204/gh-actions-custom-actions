@@ -5,6 +5,10 @@ inputs:
     description: "The caching strategy to use"
     required: false
     default: "true"
+outputs:
+  cache-hit:
+    description: "Whether the cache was hit"
+    value: ${{ steps.cache-outputs.outputs.cache-hit }}
 runs:
   using: "composite"
   steps:
@@ -19,3 +23,6 @@ runs:
       if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true'
       run: npm ci
       shell: bash
+    - name: Set cache-hit output
+      id: cache-outputs
+      run: echo "cache-hit=${{ steps.cache.outputs.cache-hit }}" >> $GITHUB_OUTPUT

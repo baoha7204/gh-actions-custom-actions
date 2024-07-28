@@ -72,8 +72,5 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4.1.7
-      - name: Install deps
-        run: npm ci
-        working-directory: ./.github/actions/deploy-s3-js
       - name: Run action
         uses: ./.github/actions/deploy-s3-js

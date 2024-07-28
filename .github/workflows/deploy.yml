@@ -71,6 +71,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v3
+      - name: Install action dependencies
+        run: |
+          cd .github/actions/deploy-s3-js
+          npm ci
       - name: Run action
         uses: ./.github/actions/deploy-s3-js

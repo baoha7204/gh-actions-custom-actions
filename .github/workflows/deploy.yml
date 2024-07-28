@@ -67,3 +67,13 @@ jobs:
         run: ls
       - name: Deploy site
         run: echo "Deploying..."
+  information:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4.1.7
+      - name: Install deps
+        run: npm ci
+        working-directory: ./.github/actions/deploy-s3-js
+      - name: Run action
+        uses: ./.github/actions/deploy-s3-js
